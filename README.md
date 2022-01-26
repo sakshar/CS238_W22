@@ -10,7 +10,7 @@ This directory contains all the data, source codes and scripts related to Homewo
 3. input1.txt: It contains the three test datasets for Partial Digest Problem
 
 # Source Codes:
-1. pdp.py: Branch and bound version of Partail Digest Problem is implemented here
+1. pdp.py: Branch and bound version of Partial Digest Problem is implemented here
 
 # Scripts:
 1. kmer.py: Generates the 5-mer distribution for the bacteria genome

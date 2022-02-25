@@ -1,0 +1,33 @@
+CS238 HW 3
+Due on Feb. 24, Thursday, at 12pm 
+
+
+Reading: Jones and Pevzner Ch 8, 10; 
+Gusfield Ch 16, 17; JXZ Ch 5, 11
+
+Q1: Q5 from HW2.
+
+Q2: Problem 6.57, p. 224, of Jones and Pevzner.  
+    What is the running time of your improved algorithm?
+
+    Note that besides Figure 6.28, a useful recurrence 
+    relation is also given on page 33 of "Updated slides on 
+    similarity based gene prediction". You should show how 
+    to incorporate the function P(i,j) into your improved
+    recurrence relation (i.e., your new recurrence relation
+    should define both functions S(i,j,B) and P(i,j)).
+
+Q3: Consider the following additive distance matrix:
+
+           | A  B  C  D  E
+         ------------------
+         A | 0  5  7  6  9
+         B | 5  0  8  5  8
+         C | 7  8  0  9  12
+         D | 6  5  9  0  7
+         E | 9  8  12 7  0
+
+    Use the algorithm given on Slide 54 based on Buneman's Theorem
+    to iteratively reconstruct the underlining evolutionary tree.
+
+    Can you also determine the branch lengths?

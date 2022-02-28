@@ -50,14 +50,15 @@ xxxx...xxxx<br />
 yyyy...yyyy<br />
 zzzz...zzzz<br />
 
-"conserve_test*.txt" reports the perfectly matched columns in the alignment with an asterisk (*) along with the start and end positions of this conserved windows. It looks like as follows:
-ACGT-TGGCT
-ACTG-GTGCT
-CCTGGGTGCT
- *     ***
-(1,1)
-(7,9)
-
+"conserve_test*.txt" reports the perfectly matched columns in the alignment with an asterisk (*) along with the start and end positions of this conserved windows. It looks like as follows:<br />
+```
+ACGT-TGGCT<br />
+ACTG-GTGCT<br />
+CCTGGGTGCT<br />
+ *     ***<br />
+(1,1)<br />
+(7,9)<br />
+```
 Moreover, there are two plots "runtime.png" and "memory_usage.png" showing the runtime (sec) and memory usage (MB) of my program vs. the input size respectively, where the x-axis actually denotes the ratio of input size w.r.t. test case 1.
 
 # src

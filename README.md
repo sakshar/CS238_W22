@@ -30,7 +30,7 @@ This directory contains all the data, source codes and scripts related to Homewo
 This directory contains all the test inputs, source codes, results, and plots related to Homework 3. "hw3-2022.txt" contains the questions for the homework.
 
 # input
-This directory contains all the test inputs in both FASTA and txt formats. "test*.txt" are in FASTA format and "cpp_test*.txt" are in plain text format. My implementation expects the 3 DNA sequences in 3 separate lines in a plain text format. I have provided a script that can convert a FASTA file to a plain text file where each line is an individual DNA sequence. Additionally, I have provided a "score.csv" file. It contains the scoring matrix required to calculate the alignment score. A user can provide his/her own scoring matrix as a csv file following the structure of the "score.csv" file. It is in a 5x5 matrix format where the bases map to indices as 'A':0, 'C':1, 'G':2, 'T':3, '-':4. Suppose, match = +5, mismatch = -4, indel = -8, and the score between two gaps = 0. Then, the csv will look like:<br />
+This directory contains all the test inputs in both FASTA and txt formats. "test*.txt" are in FASTA format and "cpp_test*.txt" are in plain text format. My implementation expects the 3 DNA sequences in 3 separate lines in a plain text format. I have provided a script that can convert a FASTA file to a plain text file where each line is an individual DNA sequence. Additionally, I have provided a "score.csv" file. It contains the scoring matrix required to calculate the alignment score. A user can provide his/her own scoring matrix as a csv file following the structure of the "score.csv" file. It is in a 5x5 matrix format where the bases map to indices as 'A':0, 'C':1, 'G':2, 'T':3, '-':4. Suppose, match = +5, mismatch = -4, indel = -8, and the score between two gaps = 0. Then, the csv will look like:
 ```
 +5,-4,-4,-4,-8
 -4,+5,-4,-4,-8
@@ -40,7 +40,7 @@ This directory contains all the test inputs in both FASTA and txt formats. "test
 ```
 # output
 This directory contains the alignment summary of the given test inputs.<br />
-"fast_cpp_result*.txt" reports the summary in the following manner:<br />
+"fast_cpp_result*.txt" reports the summary in the following manner:
 ```
 Optimal alignment score: xxxx
 Length of the alignment: xxxx
@@ -52,7 +52,7 @@ xxxx...xxxx
 yyyy...yyyy
 zzzz...zzzz
 ```
-"conserve_test*.txt" reports the perfectly matched columns in the alignment with an asterisk (*) along with the start and end positions of this conserved windows. It looks like as follows:<br />
+"conserve_test*.txt" reports the perfectly matched columns in the alignment with asterisks (*) along with the start and end positions of these conserved windows. It looks like as follows:
 ```
 ACGT-TGGCT
 ACTG-GTGCT

@@ -4,20 +4,20 @@
 #include <vector>
 #include <time.h>
 #include <fstream>
-
+#include <sstream>
 using namespace std;
 
 unordered_map<char, int> base_map;
 
-int score[5][5] = {{5, -4, -4, -4, -8},
+int score[5][5]; /* = {{5, -4, -4, -4, -8},
                    {-4, 5, -4, -4, -8},
                    {-4, -4, 5, -4, -8},
                    {-4, -4, -4, 5, -8},
-                   {-8, -8, -8, -8, 0}};
+                   {-8, -8, -8, -8, 0}};*/
     
-string num = "5";
-string input_file = "cpp_test"+num+".txt";
-string output_file = "fast_cpp_result"+num+".txt";
+//string num = "5";
+//string input_file = "cpp_test"+num+".txt";
+//string output_file = "fast_cpp_result"+num+".txt";
 string x = "";//"GCTGATATAACT";
 string y = "";//"GGGTGATTAGCT";
 string z = "";//"AGCGGAACACCT";
@@ -521,7 +521,7 @@ Result * optimalAlignment3D(int start_x, int end_x, int start_y, int end_y, int 
     return res;
 }
 
-int main(){
+int main(int argc, char *argv[]){
     base_map['A'] = 0;
     base_map['C'] = 1;
     base_map['G'] = 2;
@@ -535,7 +535,7 @@ int main(){
     cout<<res1->alignment[2]<<endl;*/
 
     //string seq[3] = {"", "", ""};
-    ifstream infile(input_file);
+    ifstream infile(argv[1]);
     if(infile.is_open()){
         string line;
         getline(infile, line);
@@ -558,6 +558,23 @@ int main(){
     for(int i = 0; i < z.length(); i++)
         z1[i] = base_map[z[i]];
     cout<<"Vectors: "<<x1.size()<<", "<<y1.size()<<", "<<z1.size()<<endl;
+
+    ifstream scorefile(argv[3]);
+    if(scorefile.is_open()){
+        string line, val;
+        int i = 0;
+        while(getline(scorefile, line)){
+            stringstream str(line);
+            int j = 0;
+            while(getline(str, val, ',')){
+                score[i][j] = stoi(val);
+                j++;
+            }
+            i++;
+        }
+    }
+    scorefile.close();
+
     clock_t start = clock();
     Result * res2 = optimalAlignment3D(0, x.length(), 0, y.length(), 0, z.length(), x1, y1, z1);
     clock_t end = clock();
@@ -574,7 +591,7 @@ int main(){
     cout<<"Perfectly matched nucleotides: "<<match<<endl;
     double run_time = (1.0*(end - start)/CLOCKS_PER_SEC);
     cout<<"Runtime (seconds): "<<run_time<<endl;
-    ofstream outfile(output_file);
+    ofstream outfile(argv[2]);
     outfile<<"Optimal alignment score: "<<res2->aln_score<<endl;
     outfile<<"Length of the alignment: "<<aln_length<<endl;
     outfile<<"Perfectly matched nucleotides: "<<match<<endl;
@@ -585,9 +602,3 @@ int main(){
     }
     outfile.close();
 }
-
-// test1: memory: 13M
-// test2: memory: 101M
-// test3: memory: 166M
-// test4: memory: 721M
-// test5: memory: 1264M

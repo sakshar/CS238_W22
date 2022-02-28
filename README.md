@@ -31,41 +31,45 @@ This directory contains all the test inputs, source codes, results, and plots re
 
 # input
 This directory contains all the test inputs in both FASTA and txt formats. "test*.txt" are in FASTA format and "cpp_test*.txt" are in plain text format. My implementation expects the 3 DNA sequences in 3 separate lines in a plain text format. I have provided a script that can convert a FASTA file to a plain text file where each line is an individual DNA sequence. Additionally, I have provided a "score.csv" file. It contains the scoring matrix required to calculate the alignment score. A user can provide his/her own scoring matrix as a csv file following the structure of the "score.csv" file. It is in a 5x5 matrix format where the bases map to indices as 'A':0, 'C':1, 'G':2, 'T':3, '-':4. Suppose, match = +5, mismatch = -4, indel = -8, and the score between two gaps = 0. Then, the csv will look like:<br />
-+5,-4,-4,-4,-8<br />
--4,+5,-4,-4,-8<br />
--4,-4,+5,-4,-8<br />
--4,-4,-4,+5,-8<br />
+```
++5,-4,-4,-4,-8
+-4,+5,-4,-4,-8
+-4,-4,+5,-4,-8
+-4,-4,-4,+5,-8
 -8,-8,-8,-8,0 
-
+```
 # output
 This directory contains the alignment summary of the given test inputs.<br />
 "fast_cpp_result*.txt" reports the summary in the following manner:<br />
-Optimal alignment score: xxxx<br />
-Length of the alignment: xxxx<br />
-Perfectly matched nucleotides: xxxx<br />
-Runtime (seconds): xx.xxx<br />
-Memory (MB): xxx<br />
-Actual aligned sequences:<br />
-xxxx...xxxx<br />
-yyyy...yyyy<br />
-zzzz...zzzz<br />
-
+```
+Optimal alignment score: xxxx
+Length of the alignment: xxxx
+Perfectly matched nucleotides: xxxx
+Runtime (seconds): xx.xxx
+Memory (MB): xxx
+Actual aligned sequences:
+xxxx...xxxx
+yyyy...yyyy
+zzzz...zzzz
+```
 "conserve_test*.txt" reports the perfectly matched columns in the alignment with an asterisk (*) along with the start and end positions of this conserved windows. It looks like as follows:<br />
 ```
-ACGT-TGGCT<br />
-ACTG-GTGCT<br />
-CCTGGGTGCT<br />
- *     ***<br />
-(1,1)<br />
-(7,9)<br />
+ACGT-TGGCT
+ACTG-GTGCT
+CCTGGGTGCT
+ *     ***
+(1,1)
+(7,9)
 ```
 Moreover, there are two plots "runtime.png" and "memory_usage.png" showing the runtime (sec) and memory usage (MB) of my program vs. the input size respectively, where the x-axis actually denotes the ratio of input size w.r.t. test case 1.
 
 # src
 This directory contains all the source codes for this 3-sequence alignment problem.
 1. fastmsa.cpp: The actual complete implementation of the memory efficient 3-sequence alignment algorithm using Divide-and-Conquer. The reported results and plots are based on its executable. It takes three arguments from the user; an input filename (.txt), an output filename (.txt), and a scoring matrix file (.csv). The commands to compile and run this program are as follows:
-	(i) g++ fastmsa.cpp -o <executable>
-	(ii) ./<executable> <path-to-input> <path-to-output> <path-to-scoring-matrix>
+```
+g++ fastmsa.cpp -o <executable>
+./<executable> <path-to-input> <path-to-output> <path-to-scoring-matrix>
+```
 2. msa.cpp: This is the previous version of "fastmsa.cpp" which uses some data structures that slow down the execution.
 3. conserved.cpp: Provided the aligned sequences, it can generate the "conserve_test*.txt" files.
 4. parser.py: Provided a FASTA file, it can generate a plain text file where each line corresponds to a separate DNA sequence from the FASTA file.
